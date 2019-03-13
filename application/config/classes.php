@@ -1,20 +1,14 @@
 <?php
-class a 
-{
- public function test()
-    {
-        echo "hello parent" ; 
-    }
-}
+    
+    ob_start(); 
+    ob_start();               
+    echo "abanob ashraf" ;
+  ob_end_flush();               
+?>  
+    <h1>hello</h1>
+<?php  
+         
+    ob_end_flush(); 
+  
 
-class b extends a
-{
-     function test()
-    {
-        echo "hello child" ; 
-    }
-}
-
-$o = new b () ; 
-$o->test() ; 
 ?>
