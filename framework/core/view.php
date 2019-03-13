@@ -19,10 +19,15 @@ class view
             return ;
         }
    }
-   function startSection($SecName)
+   function startSection($SecName , $SecCont = NULL)
    {
      $this->SectionNow = $SecName ; 
-     ob_start(); 
+     ob_start();
+     if ( $SecCont != NULL)
+     {
+         echo $SecCont ;
+         $this->stopSection() ; 
+     }
    }
    function stopSection()
    {
@@ -40,8 +45,15 @@ class view
    {
        if (isset($this->Sections[$SecName]))
             echo $this->Sections[$SecName] ;
-       else 
-        echo "Non-Valid Name";
+   }
+
+   function showSection()
+   {
+       $cont = ob_get_contents() ; 
+       ob_end_clean();
+       $rep =  $this->Sections[$this->SectionNow] ; 
+       $rep = str_replace("@parent@" , $cont, $rep);
+       echo $rep ; 
    }
 }
 
