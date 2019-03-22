@@ -4,20 +4,19 @@ class model
     protected $MyDB ;
     protected $dbname ;
     protected $ColumnNames ; 
-    protected $TableName ;
-    protected $PrimaryKey;
+    protected $tableName ;
+    protected $primaryKey;
 
     public function __construct($name)
     {
-         $this->MyDB = new Database($GLOBALS['config']) ; 
-         $this->dbname = $GLOBALS['config']['dbname'] ;
-         $this->TableName = $name;
+         $this->MyDB = Database::getDataBaseObj($name,$GLOBALS['config']) ; 
+         $this->tableName = $name;
          $this->Get_Columns_Names();
     }
 
     private function Get_Columns_Names()
     {
-        $stat = "SELECT * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME ='{$this->TableName}' AND TABLE_SCHEMA = '{$this->dbname}'";
+        $stat = "SELECT * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME ='{$this->tableName}' AND TABLE_SCHEMA = '{$this->dbname}'";
         $result = $this->MyDB->query($stat) ;
         foreach($result as $row)
         {
@@ -26,92 +25,40 @@ class model
                 $this->PrimaryKey = $row['COLUMN_NAME'] ;
         }
     }
-
-    public function Insert($FildsValue = array())
-    {   
-        $MarksVals = array () ; 
-        $FildsValue [$this->PrimaryKey] = $this->MyDB->Get_ID();
-        $vals = ") VALUES (". str_repeat("?,", count($FildsValue));
-        $vals[strlen($vals)-1] = ')'; 
-        $flag = 0 ; 
-        $stat = "INSERT INTO {$this->TableName} (" ; 
-
-        foreach($FildsValue as $key => $val)
-        {
-           if ($flag)
-             $stat .= ", ";
-           $flag = 1;
-           $stat .= $key ; 
-           $MarksVals[] = $val ;
-        }
-        $stat .= $vals ; 
-        $stat = rtrim($stat , ',') ; 
-       
-       $this->MyDB->exe($stat , $MarksVals); 
-    }
-
-    public function Update($ID , $FildsValue = array())
+    public function insert(array $FildsValue = array())
     {
-        $Marks = "" ; 
-        $MarksVals = array () ; 
-        foreach($FildsValue as $key => $val)
-        {
-           $Marks .= "{$key} = ? ," ; 
-           $MarksVals[] = $val ;
-        }
-        $Marks = rtrim($Marks , ',') ; 
-        $stat = "UPDATE `{$this->TableName}` SET {$Marks} WHERE {$this->PrimaryKey} = $ID" ; 
-        $this->MyDB->exe($stat , $MarksVals); 
+        $this->MyDB->setTableName($this->tableName); 
+        $this->MyDB->insert($FildsValue) ; 
     }
-    public function Delete($ID)
+    public function Update($where = "" , array $FildsValue = array())
     {
-        $in = "" ;
-        if (is_array($ID))
-            $in = 'IN ('. str_repeat("?," , count($ID)) .')';
-        else{
-            $in = " = ?";
-            $ID = array($ID);
-        }
-           
-        $stat = "DELETE FROM `{$this->TableName}` WHERE {$this->PrimaryKey} {$in}" ; 
-        $this->MyDB->exe($stat , $ID); 
+        $this->MyDB->setTableName($this->tableName); 
+        $this->MyDB->update($where, $FildsValue) ; 
     }
-    public function Size()
+    public function Delete(array $ID)
     {
-        $stat = "SELECT  *  FROM `{$this->TableName}`" ; 
-        $res = $this->MyDB->query($stat);
-        return $res->rowCount();
+        $this->MyDB->setTableName($this->tableName); 
+        $this->MyDB->Delete($ID) ; 
     }
-    public function GetAll()
+    public function size()
     {
-        return $this->GetWhere();
+        $this->MyDB->setTableName($this->tableName); 
+        return $this->MyDB->size() ; 
     }
-    public function GetOne($ID)
+    public function getAll()
     {
-        $res = $this->GetWhere("{$this->PrimaryKey}  = ?" , [$ID]);
-        return $res[0] ; 
+        $this->MyDB->setTableName($this->tableName); 
+        return $this->MyDB->getAll() ; 
     }
-    public function GetWhere($condition = "", $MarksVals = array(), $keys = array())
+    public function getOne($ID)
     {
-        $stat = "SELECT  *  FROM `{$this->TableName}`" ; 
-        if (!empty($condition))
-            $stat .= ' WHERE ' . $condition;
-
-        if (isset($keys["ORDER BY"]))
-        {
-            if (count($keys["ORDER BY"]) == 2)
-            {
-                 $stat .= "ORDER BY " . $keys["ORDER BY"][0] . " " . $keys["ORDER BY"][1];
-            }
-        }
-
-        if (isset($keys["LIMIT"]) && $keys["LIMIT"] > 0)
-        {
-            $stat .= " LIMIT {$keys['LIMIT']}" ; 
-        }
-      
-        $res = $this->MyDB->exe($stat,$MarksVals,1);
-        return $res->fetchAll();
+        $this->MyDB->setTableName($this->tableName); 
+        return $this->MyDB->getOne($ID); 
+    }
+    public function getWhere($condition = "", array $MarksVals = array(), array $keys = array())
+    {
+        $this->MyDB->setTableName($this->tableName); 
+        return $this->MyDB->getWhere($condition,$MarksVals, $keys);
     }
 }
 ?>
