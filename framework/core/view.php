@@ -56,5 +56,4 @@ class view
        echo $rep ; 
    }
 }
-
 ?>

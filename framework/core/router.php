@@ -20,6 +20,8 @@ class router
         {
             self::Routing($url);
         }
+       
+
     }
 
     public static function setPath($url , $controller , $function = "index")
@@ -34,6 +36,7 @@ class router
 
     private static function load($ClassName)
     {
+
         if (substr($ClassName , -10) == "Controller")
         {
             $class =  CONTROLLER_PATH . $ClassName . ".php" ;
@@ -44,7 +47,9 @@ class router
         }
       
         if (file_exists($class))
+        {
             require_once $class;
+        }
         else {
             require_once  CONTROLLER_PATH . "ErrorController.php" ;
             throw new Exception("Class Not Found"); 
@@ -55,7 +60,6 @@ class router
     {
         $url = rtrim($url,'/') ;
         $url = explode( '/', $url); 
-        var_dump($url);
         $controller = empty($url[1])? "home" : $url[1] ;
         $controller =   $controller . "Controller";
         try
