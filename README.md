@@ -76,5 +76,6 @@ You can staring to use the framework by a few steps :
      - **_session.php_**
      - **_cookies.php_**
 - **_public_**
+
   The public directory contains the index.php file, which is the entry point for all requests entering your application, its having the decraration of the framework class and few implementation to start this life cycle.
-  - index.php
+  - **_index.php_**
