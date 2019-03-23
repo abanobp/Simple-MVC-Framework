@@ -25,43 +25,34 @@ You can staring to use the framework by a few steps :
 - **_application_**
   - **_config_**
     - **_config.php_** 
-    
-        This file contains all data that needed to connect the project database
-        so, you can open and edit this data to connect your database.    
+        > **This file contains all data that needed to connect the project database
+        so, you can open and edit this data to connect your database.**
      - **_init.php_**
-        
-        This file contains some global constant values you can access it in any file of your project
-        and if you want to define other global constants you should create it in this file.
+        > **This file contains some global constant values you can access it in any file of your project
+        and if you want to define other global constants you should create it in this file.**
      - **_routes.php_**
-       
-       This file contains all defined routes of your project and this file now empty
-       so, if you want to create a default route you should create it in this file.
+       > **This file contains all defined routes of your project and this file now empty
+       so, if you want to create a default route you should create it in this file.**
   - **_controllers_**
-    
-    You should create all controllers classes files in this directory and
+    > **You should create all controllers classes files in this directory and
     each file name should be the same name of the class name that is inside this file and
-    each controller should have word "Controller" after his name and the same in his file name (e.g: homeController.php).
+    each controller should have word "Controller" after his name and the same in his file name (e.g: homeController.php).**
   - **_models_**
-  
-    You should create all models classes files in this directory and
+    > **You should create all models classes files in this directory and
     each file name should be the same name of the class name that is inside this file and
-    each model should have word "Model" after his name and the same in his file name (e.g: homeModel.php).
+    each model should have word "Model" after his name and the same in his file name (e.g: homeModel.php).**
   - **_views_**
-  
-    You should create all your views in this directory and to create view,
+    >**You should create all your views in this directory and to create view,
     should first create a dirctory and its name is the name of this view
-    and create index.php file inside this dirctory having your view implementation.
+    and create index.php file inside this dirctory having your view implementation.**
     - **_home_**
-      
-      This is the default view and an example how to create view.
+      > **This is the default view and an example how to create view.**
       - **_index.php_**
     - **_Layouts_**
-      
-      If you want to create a templates to extend it in your views souch as a default layouts, you should create this file in this dirctory.
+      > **If you want to create a templates to extend it in your views souch as a default layouts, you should create this file in this dirctory.**
 - **_framework_**
   - **_core_**
-  
-    This dirctory contains all core classes files that manage the request life cycle depends on the Model View Controller architecture Pattern.
+    > **This dirctory contains all core classes files that manage the request life cycle depends on the Model View Controller architecture Pattern.**
     
     - **_controller.php_**
     - **_framework.php_**
@@ -69,13 +60,11 @@ You can staring to use the framework by a few steps :
     - **_router.php_**
     - **_view.php_**
   - **_database_**
-    
-    This dirctory contains the database class that create all database connections
+    > **This dirctory contains the database class that create all database connections.**
      - **_database.php_**
    - **_liberaries_**
      - **_session.php_**
      - **_cookies.php_**
 - **_public_**
-
-  The public directory contains the index.php file, which is the entry point for all requests entering your application, its having the decraration of the framework class and few implementation to start this life cycle.
+  > **The public directory contains the index.php file, which is the entry point for all requests entering your application, its having the decraration of the framework class and few implementation to start this life cycle.**
   - **_index.php_**
