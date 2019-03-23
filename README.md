@@ -60,10 +60,19 @@ You can staring to use the framework by a few steps :
       If you want to create a templates to extend it in your views souch as a default layouts, you should create this file in this dirctory.
 - **_framework_**
   - **_core_**
-    This dirctory contains all core classes files that manage the request life cycle depends on the Model View Controller Pattern
+  
+    This dirctory contains all core classes files that manage the request life cycle depends on the Model View Controller architecture Pattern.
+    
     - **_controller.php_**
     - **_framework.php_**
     - **_model.php_**
     - **_router.php_**
     - **_view.php_**
+  - **_database_**
+    
+    This dirctory contains the database class that create all database connections
+     - **_database.php_**
+   - **_liberaries_**
+     - **_session.php_**
+     - **_cookies.php_**
 - **public**
