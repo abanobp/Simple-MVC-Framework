@@ -68,3 +68,24 @@ You can staring to use the framework by a few steps :
 - **_public_**
   > **The public directory contains the index.php file, which is the entry point for all requests entering your application, its having the decraration of the framework class and few implementation to start this life cycle.**
   - **_index.php_**
+
+## Routing
+You have to ways to route your request to the valid controller to start its life cycle
+### **_Basic routing:-_**
+By the basic routing way, you can create/ set any number of routes manualy.
+The first you should create this routes in the file **_routes.php_** 
+The full path of the file is :-
+> **application/config/routes.php**
+#### How to create the route?
+You can use the **static** function of the **router** class that called **setPath** and the function takes two or three parameters:-
+1. **URL** (required):- the request that you want to route it.
+2. **Controller** (required):-the name of controller that you want run it when this URL required and should have word "Controller" after the controller name.
+3. **Function** (optional) :- the name of controller's function that you want run it when this URL requested and the default of this parameter is **index** function.
+```php
+    router::setPath("/" , "homeController"); // in this case the function name is "index"
+    router::setPath("/about" , "aboutStartUpController" , "allDetails");
+```
+**Note : if you want to send arguments to the controller's function you can sent it by GET/ POST Methodes and access this values bb the global varibles $\_POST/ $\_GET in php**
+
+I'm working to make the URL having a variables and send it to the controller's function.
+### **_fixed/ automatic routing:-_**
