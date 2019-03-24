@@ -1,18 +1,45 @@
 # PHP Model View Controller Framework
 Simple PHP Framework to build and develop websites by easy and efficient ways.
 
-## Introduction
+# Introduction
 
 It is a small PHP framework, the main goal of it is helping the developer to build his web project in Model View Controller Architecture pattern, it provides him more functionalities to support the basics core of this pattern and some utilities and features makes the web sites developing more easy.
 
-## The reason of implementing the framework
+# The reason of implementing the framework
 
 I’m implemented this framework for my personal practicing on the design or architecture patterns concepts, specially the MVC pattern and trying to implement some features and utilities of the big MVC frameworks like **Laravel** to have a right and big understanding of how each functionality work in the low level.
 
-## Prerequisites
+# Contents
+- [Prerequisites](https://github.com/abanobp/Simple-MVC-Framework#prerequisites)
+- [Getting Started](https://github.com/abanobp/Simple-MVC-Framework#getting-start)
+- [Request life cycle]()
+- [Directory Structure](https://github.com/abanobp/Simple-MVC-Framework#directory-structure)
+- [Routing](https://github.com/abanobp/Simple-MVC-Framework#routing)
+  - [Basic Routing](https://github.com/abanobp/Simple-MVC-Framework#basic-routing-)
+  - [Fixed| automatic routing]()
+- [Contorllers]()
+  - [How to create a Controller]()
+  - [Controller Object Properties]()
+  - [Controller Object Functions or Methods]()
+- [Models]()
+  - [How to create a Model]()
+  - [Model Object Properties]()
+  - [Model Object Functions or Methods]()
+- [views]()
+  - [How to create a View]()
+  - [View Object Properties]()
+  - [View Object Functions or Methods]()
+- [Database Class]()
+- [session class]()
+- [cookies class]()
+
+# Prerequisites
 Just install Apache server on your machine and turn on it.
 
-## Getting Start 
+# Request life cycle
+TODO
+
+# Getting Started
 
 You can staring to use the framework by a few steps :
 - Download the repository.
@@ -20,7 +47,7 @@ You can staring to use the framework by a few steps :
 - Change the file name with your project name.
 - start building and developing your worbsite.
 
-## Directory Structure
+# Directory Structure
 
 - **_application_**
   - **_config_**
@@ -69,14 +96,14 @@ You can staring to use the framework by a few steps :
   > **The public directory contains the index.php file, which is the entry point for all requests entering your application, its having the decraration of the framework class and few implementation to start this life cycle.**
   - **_index.php_**
 
-## Routing
+# Routing
 You have to ways to route your request to the valid controller to start its life cycle
-### **_Basic routing:-_**
+## 1. Basic routing: 
 By the basic routing way, you can create/ set any number of routes manualy.
 The first you should create this routes in the file **_routes.php_** 
 The full path of the file is :-
 > **application/config/routes.php**
-#### How to create the route?
+## 2. How to create the route?
 You can use the **static** function of the **router** class that called **setPath** and the function takes two or three parameters:-
 1. **URL** (required):- the request that you want to route it.
 2. **Controller** (required):-the name of controller that you want run it when this URL required and should have word "Controller" after the controller name.
@@ -88,4 +115,44 @@ You can use the **static** function of the **router** class that called **setPat
 **Note : if you want to send arguments to the controller's function you can sent it by GET/ POST Methodes and access this values bb the global varibles $\_POST/ $\_GET in php**
 
 I'm working to make the URL having a variables and send it to the controller's function.
-### **_fixed/ automatic routing:-_**
+## 2. Fixed | automatic routing:
+The documentation content of this block will be available as soon as possible.
+
+# Contorllers
+The documentation content of this block will be available as soon as possible.
+## 1. How to create a Controller 
+The documentation content of this block will be available as soon as possible.
+      
+## 2.  Controller Object Properties
+   The documentation content of this block will be available as soon as possible.
+## 3.  Controller Object Functions or Methods
+   The documentation content of this block will be available as soon as possible.
+
+# Models
+The documentation content of this block will be available as soon as possible.
+## 1.  How to create a Model 
+   The documentation content of this block will be available as soon as possible.
+      
+## 2.  Model Object Properties
+   The documentation content of this block will be available as soon as possible.
+## 3.  Model Object Functions or Methods
+   The documentation content of this block will be available as soon as possible.
+
+# Views
+The documentation content of this block will be available as soon as possible.
+## 1. How to create a View 
+   The documentation content of this block will be available as soon as possible.
+      
+## 2. View Object Properties
+   The documentation content of this block will be available as soon as possible.
+##  3. View Object Functions or Methods
+   The documentation content of this block will be available as soon as possible.
+# Database Class
+The documentation content of this block will be available as soon as possible.
+
+# Session Class
+The documentation content of this block will be available as soon as possible.
+
+# Cookies Class
+The documentation content of this block will be available as soon as possible.
+
